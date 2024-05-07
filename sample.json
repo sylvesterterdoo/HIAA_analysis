@@ -1,0 +1,259 @@
+  {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "id": "50620.2023.12",
+        "type": "Feature",
+        "geometry": {
+          "coordinates": [
+            -63.50861111111111,
+            44.88111111111111
+          ],
+          "type": "Point"
+        },
+        "properties": {
+          "MIN_TEMPERATURE": -9.7,
+          "TOTAL_PRECIPITATION": 138.7,
+          "DAYS_WITH_VALID_PRECIP": 31,
+          "COOLING_DEGREE_DAYS": 0,
+          "HEATING_DEGREE_DAYS": 542.1,
+          "ID": "50620.2023.12",
+          "LOCAL_YEAR": 2023,
+          "NORMAL_SUNSHINE": null,
+          "NORMAL_SNOWFALL": null,
+          "TOTAL_SNOWFALL": 38,
+          "DAYS_WITH_VALID_SNOWFALL": 31,
+          "MAX_TEMPERATURE": 15.3,
+          "LOCAL_MONTH": 12,
+          "DAYS_WITH_VALID_MEAN_TEMP": 31,
+          "LAST_UPDATED": "2024-01-01 11:30:48",
+          "LONGITUDE": "-63.509",
+          "STATION_NAME": "HALIFAX STANFIELD INT'L A",
+          "ENG_PROVINCE_NAME": "NOVA SCOTIA",
+          "FRE_PROVINCE_NAME": "NOUVELLE-ÉCOSSE",
+          "DAYS_WITH_VALID_MIN_TEMP": 31,
+          "NORMAL_MEAN_TEMPERATURE": null,
+          "DAYS_WITH_PRECIP_GE_1MM": 13,
+          "PROVINCE_CODE": "NS",
+          "NORMAL_PRECIPITATION": null,
+          "SNOW_ON_GROUND_LAST_DAY": 4,
+          "LATITUDE": "44.881",
+          "DAYS_WITH_VALID_SUNSHINE": 0,
+          "DAYS_WITH_VALID_MAX_TEMP": 31,
+          "CLIMATE_IDENTIFIER": "8202251",
+          "LOCAL_DATE": "2023-12",
+          "MEAN_TEMPERATURE": 0.5129032258064516,
+          "BRIGHT_SUNSHINE": null
+        }
+      },
+      {
+        "id": "50620.2024.1",
+        "type": "Feature",
+        "geometry": {
+          "coordinates": [
+            -63.50861111111111,
+            44.88111111111111
+          ],
+          "type": "Point"
+        },
+        "properties": {
+          "MIN_TEMPERATURE": -14,
+          "TOTAL_PRECIPITATION": 138.3,
+          "DAYS_WITH_VALID_PRECIP": 31,
+          "COOLING_DEGREE_DAYS": 0,
+          "HEATING_DEGREE_DAYS": 681.6,
+          "ID": "50620.2024.1",
+          "LOCAL_YEAR": 2024,
+          "NORMAL_SUNSHINE": null,
+          "NORMAL_SNOWFALL": null,
+          "TOTAL_SNOWFALL": 47.6,
+          "DAYS_WITH_VALID_SNOWFALL": 31,
+          "MAX_TEMPERATURE": 10.1,
+          "LOCAL_MONTH": 1,
+          "DAYS_WITH_VALID_MEAN_TEMP": 31,
+          "LAST_UPDATED": "2024-02-01 11:33:23",
+          "LONGITUDE": "-63.509",
+          "STATION_NAME": "HALIFAX STANFIELD INT'L A",
+          "ENG_PROVINCE_NAME": "NOVA SCOTIA",
+          "FRE_PROVINCE_NAME": "NOUVELLE-ÉCOSSE",
+          "DAYS_WITH_VALID_MIN_TEMP": 31,
+          "NORMAL_MEAN_TEMPERATURE": null,
+          "DAYS_WITH_PRECIP_GE_1MM": 11,
+          "PROVINCE_CODE": "NS",
+          "NORMAL_PRECIPITATION": null,
+          "SNOW_ON_GROUND_LAST_DAY": 18,
+          "LATITUDE": "44.881",
+          "DAYS_WITH_VALID_SUNSHINE": 0,
+          "DAYS_WITH_VALID_MAX_TEMP": 31,
+          "CLIMATE_IDENTIFIER": "8202251",
+          "LOCAL_DATE": "2024-01",
+          "MEAN_TEMPERATURE": -3.9870967741935486,
+          "BRIGHT_SUNSHINE": null
+        }
+      },
+      {
+        "id": "50620.2023.11",
+        "type": "Feature",
+        "geometry": {
+          "coordinates": [
+            -63.50861111111111,
+            44.88111111111111
+          ],
+          "type": "Point"
+        },
+        "properties": {
+          "MIN_TEMPERATURE": -8.5,
+          "TOTAL_PRECIPITATION": 142.1,
+          "DAYS_WITH_VALID_PRECIP": 30,
+          "COOLING_DEGREE_DAYS": 0,
+          "HEATING_DEGREE_DAYS": 461.3,
+          "ID": "50620.2023.11",
+          "LOCAL_YEAR": 2023,
+          "NORMAL_SUNSHINE": null,
+          "NORMAL_SNOWFALL": null,
+          "TOTAL_SNOWFALL": 12,
+          "DAYS_WITH_VALID_SNOWFALL": 30,
+          "MAX_TEMPERATURE": 14.6,
+          "LOCAL_MONTH": 11,
+          "DAYS_WITH_VALID_MEAN_TEMP": 29,
+          "LAST_UPDATED": "2023-12-01 11:30:46",
+          "LONGITUDE": "-63.509",
+          "STATION_NAME": "HALIFAX STANFIELD INT'L A",
+          "ENG_PROVINCE_NAME": "NOVA SCOTIA",
+          "FRE_PROVINCE_NAME": "NOUVELLE-ÉCOSSE",
+          "DAYS_WITH_VALID_MIN_TEMP": 29,
+          "NORMAL_MEAN_TEMPERATURE": null,
+          "DAYS_WITH_PRECIP_GE_1MM": 9,
+          "PROVINCE_CODE": "NS",
+          "NORMAL_PRECIPITATION": null,
+          "SNOW_ON_GROUND_LAST_DAY": 0,
+          "LATITUDE": "44.881",
+          "DAYS_WITH_VALID_SUNSHINE": 0,
+          "DAYS_WITH_VALID_MAX_TEMP": 29,
+          "CLIMATE_IDENTIFIER": "8202251",
+          "LOCAL_DATE": "2023-11",
+          "MEAN_TEMPERATURE": 2.093103448275862,
+          "BRIGHT_SUNSHINE": null
+        }
+      },
+      {
+        "id": "50620.2024.2",
+        "type": "Feature",
+        "geometry": {
+          "coordinates": [
+            -63.50861111111111,
+            44.88111111111111
+          ],
+          "type": "Point"
+        },
+        "properties": {
+          "MIN_TEMPERATURE": -15.9,
+          "TOTAL_PRECIPITATION": 210.5,
+          "DAYS_WITH_VALID_PRECIP": 29,
+          "COOLING_DEGREE_DAYS": 0,
+          "HEATING_DEGREE_DAYS": 610.5,
+          "ID": "50620.2024.2",
+          "LOCAL_YEAR": 2024,
+          "NORMAL_SUNSHINE": null,
+          "NORMAL_SNOWFALL": null,
+          "TOTAL_SNOWFALL": 133.6,
+          "DAYS_WITH_VALID_SNOWFALL": 29,
+          "MAX_TEMPERATURE": 11.1,
+          "LOCAL_MONTH": 2,
+          "DAYS_WITH_VALID_MEAN_TEMP": 29,
+          "LAST_UPDATED": "2024-03-01 11:31:16",
+          "LONGITUDE": "-63.509",
+          "STATION_NAME": "HALIFAX STANFIELD INT'L A",
+          "ENG_PROVINCE_NAME": "NOVA SCOTIA",
+          "FRE_PROVINCE_NAME": "NOUVELLE-ÉCOSSE",
+          "DAYS_WITH_VALID_MIN_TEMP": 29,
+          "NORMAL_MEAN_TEMPERATURE": null,
+          "DAYS_WITH_PRECIP_GE_1MM": 14,
+          "PROVINCE_CODE": "NS",
+          "NORMAL_PRECIPITATION": null,
+          "SNOW_ON_GROUND_LAST_DAY": 3,
+          "LATITUDE": "44.881",
+          "DAYS_WITH_VALID_SUNSHINE": 0,
+          "DAYS_WITH_VALID_MAX_TEMP": 29,
+          "CLIMATE_IDENTIFIER": "8202251",
+          "LOCAL_DATE": "2024-02",
+          "MEAN_TEMPERATURE": -3.0517241379310347,
+          "BRIGHT_SUNSHINE": null
+        }
+      },
+      {
+        "id": "50620.2024.3",
+        "type": "Feature",
+        "geometry": {
+          "coordinates": [
+            -63.50861111111111,
+            44.88111111111111
+          ],
+          "type": "Point"
+        },
+        "properties": {
+          "MIN_TEMPERATURE": -13.9,
+          "TOTAL_PRECIPITATION": 234.2,
+          "DAYS_WITH_VALID_PRECIP": 31,
+          "COOLING_DEGREE_DAYS": 0,
+          "HEATING_DEGREE_DAYS": 498.1,
+          "ID": "50620.2024.3",
+          "LOCAL_YEAR": 2024,
+          "NORMAL_SUNSHINE": null,
+          "NORMAL_SNOWFALL": null,
+          "TOTAL_SNOWFALL": 7.4,
+          "DAYS_WITH_VALID_SNOWFALL": 31,
+          "MAX_TEMPERATURE": 14.4,
+          "LOCAL_MONTH": 3,
+          "DAYS_WITH_VALID_MEAN_TEMP": 31,
+          "LAST_UPDATED": "2024-04-01 11:31:06",
+          "LONGITUDE": "-63.509",
+          "STATION_NAME": "HALIFAX STANFIELD INT'L A",
+          "ENG_PROVINCE_NAME": "NOVA SCOTIA",
+          "FRE_PROVINCE_NAME": "NOUVELLE-ÉCOSSE",
+          "DAYS_WITH_VALID_MIN_TEMP": 31,
+          "NORMAL_MEAN_TEMPERATURE": null,
+          "DAYS_WITH_PRECIP_GE_1MM": 15,
+          "PROVINCE_CODE": "NS",
+          "NORMAL_PRECIPITATION": null,
+          "SNOW_ON_GROUND_LAST_DAY": null,
+          "LATITUDE": "44.881",
+          "DAYS_WITH_VALID_SUNSHINE": 0,
+          "DAYS_WITH_VALID_MAX_TEMP": 31,
+          "CLIMATE_IDENTIFIER": "8202251",
+          "LOCAL_DATE": "2024-03",
+          "MEAN_TEMPERATURE": 1.9322580645161291,
+          "BRIGHT_SUNSHINE": null
+        }
+      }
+    ],
+    "numberMatched": 5,
+    "numberReturned": 5,
+    "links": [
+      {
+        "type": "application/geo+json",
+        "rel": "self",
+        "title": "This document as GeoJSON",
+        "href": "https://api.weather.gc.ca/collections/climate-monthly/items?f=json&lang=en-CA&limit=10&additionalProp1=%7B%7D&skipGeometry=false&datetime=2023-11-01T00%3A00%3A00Z%2F2024-03-31T23%3A59%3A59Z&CLIMATE_IDENTIFIER=8202251"
+      },
+      {
+        "rel": "alternate",
+        "type": "application/ld+json",
+        "title": "This document as RDF (JSON-LD)",
+        "href": "https://api.weather.gc.ca/collections/climate-monthly/items?f=jsonld&lang=en-CA&limit=10&additionalProp1=%7B%7D&skipGeometry=false&datetime=2023-11-01T00%3A00%3A00Z%2F2024-03-31T23%3A59%3A59Z&CLIMATE_IDENTIFIER=8202251"
+      },
+      {
+        "type": "text/html",
+        "rel": "alternate",
+        "title": "This document as HTML",
+        "href": "https://api.weather.gc.ca/collections/climate-monthly/items?f=html&lang=en-CA&limit=10&additionalProp1=%7B%7D&skipGeometry=false&datetime=2023-11-01T00%3A00%3A00Z%2F2024-03-31T23%3A59%3A59Z&CLIMATE_IDENTIFIER=8202251"
+      },
+      {
+        "type": "application/json",
+        "title": "Monthly Climate Observation Summaries",
+        "rel": "collection",
+        "href": "https://api.weather.gc.ca/collections/climate-monthly/items"
+      }
+    ],
+    "timeStamp": "2024-05-06T22:45:50.110396Z"
+  }
