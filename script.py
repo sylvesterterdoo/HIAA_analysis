@@ -50,52 +50,63 @@ def read_and_write_data():
       
       # Parse the JSON response
       parsed_json = json.loads(response.text)
-
-      # Extract properties from features and create a list of dictionaries
-      for feature in parsed_json['features']:
-        properties = feature['properties']
-        properties['id'] = feature['id']  # Add 'id' field from the feature
-        properties_list.append(properties)
-      
-      # Debug Info 
-      # Process the data (replace this with your desired logic)
-      print(f"Data for {current_year}-{current_year + 1}:")
       print(parsed_json)
-      print("=" * 50)
 
-  # Create DataFrame from the list of dictionaries
-  df = pd.DataFrame(properties_list)
+  #     # Extract properties from features and create a list of dictionaries
+  #     for feature in parsed_json['features']:
+  #       properties = feature['properties']
+  #       properties['id'] = feature['id']  # Add 'id' field from the feature
+  #       properties_list.append(properties)
+      
+  #     # Debug Info 
+  #     # Process the data (replace this with your desired logic)
+  #     print(f"Data for {current_year}-{current_year + 1}:")
+  #     print(parsed_json)
+  #     print("=" * 50)
 
-  # Reorder columns to have 'id' as the first column
-  cols = df.columns.tolist()
-  cols = ['id'] + [col for col in cols if col != 'id']
-  df = df[cols]
+  # # Create DataFrame from the list of dictionaries
+  # df = pd.DataFrame(properties_list)
 
-  # Write DataFrame to CSV file
-  df.to_csv('dailyData.csv', index=False)  # Set index=False to exclude row numbers
+  # # Reorder columns to have 'id' as the first column
+  # cols = df.columns.tolist()
+  # cols = ['id'] + [col for col in cols if col != 'id']
+  # df = df[cols]
+
+  # # Write DataFrame to CSV file
+  # df.to_csv('dailyData.csv', index=False)  # Set index=False to exclude row numbers
 
 
 def q1():
+
   # Load the new dataset
   df = pd.read_csv('dailyData.csv')
-  # Convert 'LAST_UPDATED' column to datetime
+
+  # Convert 'LOCAL_DATE' column to datetime
   df['LOCAL_DATE'] = pd.to_datetime(df['LOCAL_DATE'])
-
-
-  # Filter data for the past ten winter seasons
-  # past_ten_winter_seasons = df[(df['LOCAL_MONTH'].isin([11, 12, 1, 2, 3])) & (df['LOCAL_YEAR'].isin([2014, 2013, 2012, 2011, 2010, 2009, 2008, 2007, 2006, 2005]))]
-
-  # Filter data for the specific dates of interest in 2024
-  # feb_2024_events = df[df['LOCAL_DATE'].isin(['2024-02-02', '2024-02-03', '2024-02-04', '2024-02-13'])]
+  df = df.sort_values(by='LOCAL_DATE')
 
   # Filter data for the February snow events in 2024
-  feb_2024_events = df[df['LOCAL_DATE'].isin(['2024-02-02', '2024-02-03', '2024-02-04', '2024-02-13'])]
+  feb_2024_dates = ['2024-02-02', '2024-02-03', '2024-02-04', '2024-02-13']
+  feb_2024_events = df[df['LOCAL_DATE'].isin(pd.to_datetime(feb_2024_dates))]
 
   # Filter data for the past ten winter seasons
-  past_ten_winter_seasons = df[df['LOCAL_DATE'].str.contains('-11-|-12-|^-01-|^02-|^03-', regex=True) & (df['LOCAL_YEAR'].isin(range(2013, 2023)))]
+  past_ten_winter_seasons = df[
+      (
+          (df['LOCAL_DATE'].dt.month.isin([11, 12, 1, 2, 3]))  # Months Nov-Mar
+          & (df['LOCAL_DATE'].dt.year.isin(range(2013, 2023)))  # Years 2013-2022
+      )
+  ]
+
+  # Calculate aggregate statistics for snowfall during the February 2024 events
+  feb_2024_snowfall_stats = {
+      'Mean Snowfall': feb_2024_events['TOTAL_SNOW'].mean(),
+      'Maximum Snowfall': feb_2024_events['TOTAL_SNOW'].max()
+  }
 
 
-  print(feb_2024_events)
+  print(df['LOCAL_DATE'])
+
+  # Calculate aggregate statistics for snow
 
   ## Calculate aggregate statistics for snowfall during the February 2024 events
   #feb_2024_snowfall_stats = {

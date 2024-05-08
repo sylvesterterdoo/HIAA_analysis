@@ -18,7 +18,12 @@ def main():
   df['LOCAL_DATE'] = pd.to_datetime(df['LOCAL_DATE'])  # Convert to datetime
   df = df.sort_values(by='LOCAL_DATE')
 
-  statistical_analysisq1(df)
+  # statistical_analysisq1(df)
+  # temporary(df)
+  # box_plot(df)
+  initial_plot() 
+  
+
 
 def statistical_analysisq1(df):
   # Sample data (assuming 'data' is the provided dataset in a list of dictionaries)
@@ -56,34 +61,34 @@ def statistical_analysisq1(df):
   }
 
 
-# Extract categories and values for bar plotting
-categories = list(winter_2024_stats.keys())
-winter_2024_values = list(winter_2024_stats.values())
-past_winters_values = list(past_winters_stats.values())
+# # Extract categories and values for bar plotting
+# categories = list(winter_2024_stats.keys())
+# winter_2024_values = list(winter_2024_stats.values())
+# past_winters_values = list(past_winters_stats.values())
 
-# Calculate positions for bars
-bar_width = 0.35
-r1 = np.arange(len(categories))
-r2 = [x + bar_width for x in r1]
+# # Calculate positions for bars
+# bar_width = 0.35
+# r1 = np.arange(len(categories))
+# r2 = [x + bar_width for x in r1]
 
-# Create side-by-side bar plots
-plt.bar(r1, winter_2024_values, color='b', width=bar_width, label='2024 Winter Season')
-plt.bar(r2, past_winters_values, color='r', width=bar_width, label='Past Ten Winter Seasons')
+# # Create side-by-side bar plots
+# plt.bar(r1, winter_2024_values, color='b', width=bar_width, label='2024 Winter Season')
+# plt.bar(r2, past_winters_values, color='r', width=bar_width, label='Past Ten Winter Seasons')
 
-# Customize the plot
-plt.xlabel('Weather Parameters')
-plt.ylabel('Aggregate Statistics')
-plt.title('Comparison of 2024 Winter Season with Past Ten Winter Seasons')
-plt.xticks([r + bar_width / 2 for r in range(len(categories))], categories)
-plt.legend()
+# # Customize the plot
+# plt.xlabel('Weather Parameters')
+# plt.ylabel('Aggregate Statistics')
+# plt.title('Comparison of 2024 Winter Season with Past Ten Winter Seasons')
+# plt.xticks([r + bar_width / 2 for r in range(len(categories))], categories)
+# plt.legend()
 
-# Show plot
-plt.show()
-
-
+# # Show plot
+# plt.show()
 
 
-def temporary():
+
+
+def temporary(df):
   # Filter data for the 2024 winter season (November 2023 to March 2024)
   # winter_2024 = df[(df['LOCAL_YEAR'] == 2024) & (df['LOCAL_MONTH'].isin([11, 12, 1, 2, 3]))]
   winter_2024 = df[(df['LAST_UPDATED'] >= '2023-11-01') & (df['LAST_UPDATED'] <= '2024-03-31')]
@@ -113,28 +118,28 @@ def temporary():
 
 
 # Extract categories and values for bar plotting
-categories = list(winter_2024_stats.keys())
-winter_2024_values = list(winter_2024_stats.values())
-past_winters_values = list(past_winters_stats.values())
+# categories = list(winter_2024_stats.keys())
+# winter_2024_values = list(winter_2024_stats.values())
+# past_winters_values = list(past_winters_stats.values())
 
-# Calculate positions for bars
-bar_width = 0.35
-r1 = np.arange(len(categories))
-r2 = [x + bar_width for x in r1]
+# # Calculate positions for bars
+# bar_width = 0.35
+# r1 = np.arange(len(categories))
+# r2 = [x + bar_width for x in r1]
 
-# Create side-by-side bar plots
-plt.bar(r1, winter_2024_values, color='b', width=bar_width, label='2024 Winter Season')
-plt.bar(r2, past_winters_values, color='r', width=bar_width, label='Past Ten Winter Seasons')
+# # Create side-by-side bar plots
+# plt.bar(r1, winter_2024_values, color='b', width=bar_width, label='2024 Winter Season')
+# plt.bar(r2, past_winters_values, color='r', width=bar_width, label='Past Ten Winter Seasons')
 
-# Customize the plot
-plt.xlabel('Weather Parameters')
-plt.ylabel('Aggregate Statistics')
-plt.title('Comparison of 2024 Winter Season with Past Ten Winter Seasons')
-plt.xticks([r + bar_width / 2 for r in range(len(categories))], categories)
-plt.legend()
+# # Customize the plot
+# plt.xlabel('Weather Parameters')
+# plt.ylabel('Aggregate Statistics')
+# plt.title('Comparison of 2024 Winter Season with Past Ten Winter Seasons')
+# plt.xticks([r + bar_width / 2 for r in range(len(categories))], categories)
+# plt.legend()
 
-# Show plot
-plt.show()
+# # Show plot
+# plt.show()
   # Visualize the comparison
   # categories = list(winter_2024_stats.keys())
   # winter_2024_values = list(winter_2024_stats.values())
@@ -209,8 +214,6 @@ def first_plot(df):
   plt.legend(title='Year')
   plt.tight_layout()
   plt.show()
-
-
 
 def compare_statistical_differences():
   # Read CSV file into DataFrame
