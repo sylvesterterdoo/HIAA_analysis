@@ -62,32 +62,91 @@ def open_file(file_name):
     except FileNotFoundError:
         print(f"File '{file_name}' not found.")
 
-def plot_descriptive_statistics(df):
-  # Call describe() on the DataFrame to obtain descriptive statistics
-  desc_stats = df.describe()
+def descriptive_statistics(winter_2024, past_10_years):
+  # winter_statistics_2024 = calculate_winter_statistics(winter_2024)
+  # winter_groups = past_10_years.groupby(past_10_years['LOCAL_DATE'].dt.year)
 
-  # Plotting using Matplotlib
-  fig, axes = plt.subplots(nrows=2, ncols=2, figsize=(12, 8))
+  # winter_statistics_per_year_past_10_years = {}
+  # for year, group in winter_groups:
+  #   winter_statistics_per_year_past_10_years[year] = calculate_winter_statistics(group)
 
-  # Bar plot for 'count'
-  axes[0, 0].bar(desc_stats.columns, desc_stats.loc['count'])
-  axes[0, 0].set_title('Count')
+  # # Convert data to DataFrame
+  # past_10_years_df = pd.DataFrame(winter_statistics_per_year_past_10_years).T
+  # winter_2024_df = pd.DataFrame.from_dict(winter_statistics_2024, orient='index')
 
-  # Bar plot for 'mean'
-  axes[0, 1].bar(desc_stats.columns, desc_stats.loc['mean'])
-  axes[0, 1].set_title('Mean')
+  # combined_df = pd.concat([past_10_years_df, winter_2024_df])
 
-  # Bar plot for 'min'
-  axes[1, 0].bar(desc_stats.columns, desc_stats.loc['min'])
-  axes[1, 0].set_title('Min')
+  # # Descriptive statistics for Mean Temperature
+  # mean_temp_stats = combined_df['Mean Temperature'].describe()
 
-  # Bar plot for 'max'
-  axes[1, 1].bar(desc_stats.columns, desc_stats.loc['max'])
-  axes[1, 1].set_title('Max')
+  # # Descriptive statistics for Total Snowfall
+  # snowfall_stats = combined_df['Total Snowfall'].describe()
 
-  # Adjust layout and display the plots
-  plt.tight_layout()
+  # # Descriptive statistics for Total Precipitation
+  # precipitation_stats = combined_df['Total Precipitation'].describe()
+
+  # Calculate statistics for winter 2024
+  winter_statistics_2024 = {
+    2024:calculate_winter_statistics(winter_2024)
+  }
+
+  # Calculate statistics for each winter season over the past 10 years
+  winter_groups = past_10_years.groupby(past_10_years['LOCAL_DATE'].dt.year)
+  winter_statistics_per_year_past_10_years = {
+      year: calculate_winter_statistics(group) for year, group in winter_groups
+  }
+
+  # Convert data to DataFrame for past 10 years
+  past_10_years_df = pd.DataFrame(winter_statistics_per_year_past_10_years).T
+
+  # Convert data to DataFrame for winter 2024
+  # winter_2024_df = pd.DataFrame(winter_statistics_2024, index=['2024']).T
+  winter_2024_df = pd.DataFrame.from_dict(winter_statistics_2024, orient='index')
+
+  # Combine past 10 years and winter 2024 data
+  combined_df = pd.concat([past_10_years_df, winter_2024_df])
+
+  # Print descriptive statistics for each metric
+  print("Descriptive Statistics for Mean Temperature:")
+  print(combined_df['Mean Temperature'].describe())
+  print("\nDescriptive Statistics for Total Snowfall:")
+  print(combined_df['Total Snowfall'].describe())
+  print("\nDescriptive Statistics for Total Precipitation:")
+  print(combined_df['Total Precipitation'].describe())
+
+  combined_df.index = combined_df.index.astype(str)
+
+  # Plot mean temperature comparison
+  plt.figure(figsize=(10, 6))
+  plt.bar(combined_df.index, combined_df['Mean Temperature'], color='b', alpha=0.7)
+  plt.xlabel('Winter Season (Year)')
+  plt.ylabel('Mean Temperature (°C)')
+  plt.title('Comparison of Mean Temperature (Past 10 Years + Winter 2024)')
+  plt.grid(True)
+  plt.xticks(rotation=45)
   plt.show()
+
+  # Plot total snowfall comparison
+  plt.figure(figsize=(10, 6))
+  plt.bar(combined_df.index, combined_df['Total Snowfall'], color='g', alpha=0.7)
+  plt.xlabel('Winter Season (Year)')
+  plt.ylabel('Total Snowfall (mm)')
+  plt.title('Comparison of Total Snowfall (Past 10 Years + Winter 2024)')
+  plt.grid(True)
+  plt.xticks(rotation=45)
+  plt.show()
+
+  # Plot total precipitation comparison
+  plt.figure(figsize=(10, 6))
+  plt.bar(combined_df.index, combined_df['Total Precipitation'], color='r', alpha=0.7)
+  plt.xlabel('Winter Season (Year)')
+  plt.ylabel('Total Precipitation (mm)')
+  plt.title('Comparison of Total Precipitation (Past 10 Years + Winter 2024)')
+  plt.grid(True)
+  plt.xticks(rotation=45)
+  plt.show()
+
+
 
 def plot_monthly_heatmap(df):
   pivot_table = df.pivot_table(values='MIN_TEMPERATURE', index=df['LOCAL_DATE'].dt.month, columns=df['LOCAL_DATE'].dt.year)
@@ -98,13 +157,37 @@ def plot_monthly_heatmap(df):
   plt.ylabel('Month')
   plt.show()
 
-# Calculate statistics for each winter season
-def calculate_statistics(data):
-    statistics = {}
-    statistics['Mean Temperature'] = data['MEAN_TEMPERATURE'].mean()
-    statistics['Total Snowfall'] = data['TOTAL_SNOWFALL'].sum()
-    statistics['Total Precipitation'] = data['TOTAL_PRECIPITATION'].sum()
-    return statistics
+# Define a function to calculate statistics for a given winter season
+def calculate_winter_statistics(data):
+    winter_statistics = {}
+    winter_statistics['Mean Temperature'] = data['MEAN_TEMPERATURE'].mean()
+    winter_statistics['Total Snowfall'] = data['TOTAL_SNOWFALL'].sum()
+    winter_statistics['Total Precipitation'] = data['TOTAL_PRECIPITATION'].sum()
+    return winter_statistics
+
+def plot_2024_winter_with_past_10_years(winter_2024, past_10_years):
+  # Group past 10 years data by winter seasons (November to March each year)
+  winter_groups = past_10_years.groupby(past_10_years['LOCAL_DATE'].dt.year)
+
+  winter_statistics_per_year = {}
+  for year, group in winter_groups:
+    winter_statistics_per_year[year] = calculate_winter_statistics(group)
+
+  # Convert winter statistics to DataFrame
+  winter_statistics_df = pd.DataFrame(winter_statistics_per_year).T
+
+  # Plot comparison of winter 2024 with past 10 years' winters
+  plt.figure(figsize=(12, 6))
+  plt.plot(winter_statistics_df.index, winter_statistics_df['Mean Temperature'], label='Mean Temperature (Past 10 Years)')
+  plt.axhline(y=winter_2024['MEAN_TEMPERATURE'].mean(), color='r', linestyle='--', label='Mean Temperature (Winter 2024)')
+  plt.xlabel('Winter Season (Year)')
+  plt.ylabel('Mean Temperature (°C)')
+  plt.title('Comparison of Winter Mean Temperature (Past 10 Years vs. Winter 2024)')
+  plt.legend()
+  plt.grid(True)
+  plt.xticks(winter_statistics_df.index)
+  plt.show()
+
 
 def main(df):
   # Sort DataFrame by 'LOCAL_DATE' (monthly date) in ascending order
@@ -115,15 +198,9 @@ def main(df):
   winter_2024 = df[(df['LOCAL_DATE'] >= '2023-11-01') & (df['LOCAL_DATE'] <= '2024-03-31')]
   past_10_years = df[(df['LOCAL_DATE'] >= '2013-11-01') & (df['LOCAL_DATE'] <= '2023-10-31')]
 
-  # plot_monthly_heatmap(df)
-
-  # Group past 10 years data by winter seasons (November to March each year)
-  winter_groups = past_10_years.groupby(past_10_years['LOCAL_DATE'].dt.year)
-
-  winter_statistics_per_year = {}
-  for year, group in winter_groups:
-    winter_statistics_per_year[year] = calculate_winter_statistics(group)
-
+  descriptive_statistics(winter_2024, past_10_years)
+  plot_monthly_heatmap(df)
+  plot_2024_winter_with_past_10_years(winter_2024, past_10_years)
 
 
 
