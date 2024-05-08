@@ -63,28 +63,6 @@ def open_file(file_name):
         print(f"File '{file_name}' not found.")
 
 def descriptive_statistics(winter_2024, past_10_years):
-  # winter_statistics_2024 = calculate_winter_statistics(winter_2024)
-  # winter_groups = past_10_years.groupby(past_10_years['LOCAL_DATE'].dt.year)
-
-  # winter_statistics_per_year_past_10_years = {}
-  # for year, group in winter_groups:
-  #   winter_statistics_per_year_past_10_years[year] = calculate_winter_statistics(group)
-
-  # # Convert data to DataFrame
-  # past_10_years_df = pd.DataFrame(winter_statistics_per_year_past_10_years).T
-  # winter_2024_df = pd.DataFrame.from_dict(winter_statistics_2024, orient='index')
-
-  # combined_df = pd.concat([past_10_years_df, winter_2024_df])
-
-  # # Descriptive statistics for Mean Temperature
-  # mean_temp_stats = combined_df['Mean Temperature'].describe()
-
-  # # Descriptive statistics for Total Snowfall
-  # snowfall_stats = combined_df['Total Snowfall'].describe()
-
-  # # Descriptive statistics for Total Precipitation
-  # precipitation_stats = combined_df['Total Precipitation'].describe()
-
   # Calculate statistics for winter 2024
   winter_statistics_2024 = {
     2024:calculate_winter_statistics(winter_2024)
@@ -146,8 +124,6 @@ def descriptive_statistics(winter_2024, past_10_years):
   plt.xticks(rotation=45)
   plt.show()
 
-
-
 def plot_monthly_heatmap(df):
   pivot_table = df.pivot_table(values='MIN_TEMPERATURE', index=df['LOCAL_DATE'].dt.month, columns=df['LOCAL_DATE'].dt.year)
   plt.figure(figsize=(10, 8))
@@ -201,8 +177,6 @@ def main(df):
   descriptive_statistics(winter_2024, past_10_years)
   plot_monthly_heatmap(df)
   plot_2024_winter_with_past_10_years(winter_2024, past_10_years)
-
-
 
 FILE_NAME = 'q1_data.csv'
 if __name__ == '__main__':
