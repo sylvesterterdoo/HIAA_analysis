@@ -4,6 +4,7 @@ import requests
 import pandas as pd
 from datetime import datetime, timedelta
 from question1 import file_exists, open_file
+import matplotlib.pyplot as plt
 
 # 2024-02-02 – 2024-02-04, and 2024-02-13
 # 2024-02-02T00:00:00Z/2024-02-14T23:59:59Z
@@ -57,7 +58,56 @@ def request_data():
 
 
 def main(df):
-  # print(df)
+
+  # Convert 'LOCAL_DATE' to datetime format
+  df['LOCAL_DATE'] = pd.to_datetime(df['LOCAL_DATE'])
+
+  # Filter data for the specific periods of interest in February 2024
+  february_first_event = df[(df['LOCAL_DATE'] >= '2024-02-02') & (df['LOCAL_DATE'] <= '2024-02-04')]
+  february_second_event = df[(df['LOCAL_DATE'] >= '2024-02-12') & (df['LOCAL_DATE'] <= '2024-02-13')]
+
+  # Filter data for the past ten winter seasons (from January 1, 2014, to October 31, 2023)
+  past_10_years = df[(df['LOCAL_DATE'] >= '2014-01-01') & (df['LOCAL_DATE'] <= '2023-10-31')]
+
+  # Calculate total snowfall for the two specific events in February 2024
+  total_snowfall_event_1 = february_first_event['TOTAL_SNOW'].sum()
+  total_snowfall_event_2 = february_second_event['TOTAL_SNOW'].sum()
+
+  # Aggregate snowfall data by year for the past ten winter seasons
+  february_snowfall_past_years = past_10_years[past_10_years['LOCAL_DATE'].dt.month == 2]
+  february_snowfall_past_years = february_snowfall_past_years.groupby(past_10_years['LOCAL_DATE'].dt.year)['TOTAL_SNOW'].sum()
+
+  # Determine if the February snow events in 2024 were rare compared to the past ten winter seasons
+  rare_event_1 = (february_snowfall_past_years >= total_snowfall_event_1).sum() == 0
+  rare_event_2 = (february_snowfall_past_years >= total_snowfall_event_2).sum() == 0
+
+  # Plotting snowfall data
+  plt.figure(figsize=(10, 6))
+
+  # Plot historical snowfall data for past ten winter seasons
+  plt.plot(february_snowfall_past_years.index, february_snowfall_past_years.values, marker='o', label='Historical Snowfall (2014-2023)')
+
+  # Plot snowfall for February 2024 events
+  plt.bar([2024], [total_snowfall_event_1], color='blue', label='Feb 2-4, 2024')
+  plt.bar([2024], [total_snowfall_event_2], color='green', label='Feb 12-13, 2024')
+
+  # Highlight rare events with different colors
+  if rare_event_1:
+      plt.bar([2024], [total_snowfall_event_1], color='red')
+  if rare_event_2:
+      plt.bar([2024], [total_snowfall_event_2], color='orange')
+
+  plt.xlabel('Year')
+  plt.ylabel('Total Snowfall (mm)')
+  plt.title('Snowfall Comparison: Feb 2024 vs. Historical (2014-2023)')
+  plt.legend()
+  plt.grid(True)
+  plt.xticks(february_snowfall_past_years.index.append(pd.Index([2024])))  # Ensure all years are shown on x-axis
+
+  plt.show()
+
+
+def main_backup(df):
   # Sort DataFrame by 'LOCAL_DATE' (monthly date) in ascending order
   df['LOCAL_DATE'] = pd.to_datetime(df['LOCAL_DATE'])  # Convert to datetime
   df = df.sort_values(by='LOCAL_DATE')
