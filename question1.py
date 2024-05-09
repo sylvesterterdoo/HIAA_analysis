@@ -50,7 +50,7 @@ def request_data():
   df = pd.DataFrame(properties_list)
 
   # Write DataFrame to CSV file
-  df.to_csv(FILE_NAME, index=False)  # Set index=False to exclude row numbers
+  df.to_csv(FILE_NAME, index=False)  
 
 def file_exists(file_name):
     return os.path.exists(file_name)
@@ -78,7 +78,6 @@ def descriptive_statistics(winter_2024, past_10_years):
   past_10_years_df = pd.DataFrame(winter_statistics_per_year_past_10_years).T
 
   # Convert data to DataFrame for winter 2024
-  # winter_2024_df = pd.DataFrame(winter_statistics_2024, index=['2024']).T
   winter_2024_df = pd.DataFrame.from_dict(winter_statistics_2024, orient='index')
 
   # Combine past 10 years and winter 2024 data
@@ -87,9 +86,11 @@ def descriptive_statistics(winter_2024, past_10_years):
   # Print descriptive statistics for each metric
   print("Descriptive Statistics for Mean Temperature:")
   print(combined_df['Mean Temperature'].describe())
-  print("\nDescriptive Statistics for Total Snowfall:")
+  print()
+  print("Descriptive Statistics for Total Snowfall:")
   print(combined_df['Total Snowfall'].describe())
-  print("\nDescriptive Statistics for Total Precipitation:")
+  print()
+  print("Descriptive Statistics for Total Precipitation:")
   print(combined_df['Total Precipitation'].describe())
 
   combined_df.index = combined_df.index.astype(str)
@@ -133,8 +134,8 @@ def plot_monthly_heatmap(df):
   plt.ylabel('Month')
   plt.show()
 
-# Define a function to calculate statistics for a given winter season
 def calculate_winter_statistics(data):
+  # Define a function to calculate statistics for a given winter season
     winter_statistics = {}
     winter_statistics['Mean Temperature'] = data['MEAN_TEMPERATURE'].mean()
     winter_statistics['Total Snowfall'] = data['TOTAL_SNOWFALL'].sum()
@@ -166,17 +167,17 @@ def plot_2024_winter_with_past_10_years(winter_2024, past_10_years):
 
 
 def main(df):
-  # Sort DataFrame by 'LOCAL_DATE' (monthly date) in ascending order
-  df['LOCAL_DATE'] = pd.to_datetime(df['LOCAL_DATE'])  # Convert to datetime
+  # Convert to datetime and sort DataFrame by 'LOCAL_DATE' in ascending order
+  df['LOCAL_DATE'] = pd.to_datetime(df['LOCAL_DATE'])  
   df = df.sort_values(by='LOCAL_DATE')
 
   # Extract data for specific periods
   winter_2024 = df[(df['LOCAL_DATE'] >= '2023-11-01') & (df['LOCAL_DATE'] <= '2024-03-31')]
   past_10_years = df[(df['LOCAL_DATE'] >= '2013-11-01') & (df['LOCAL_DATE'] <= '2023-10-31')]
 
-  descriptive_statistics(winter_2024, past_10_years)
   plot_monthly_heatmap(df)
   plot_2024_winter_with_past_10_years(winter_2024, past_10_years)
+  descriptive_statistics(winter_2024, past_10_years)
 
 FILE_NAME = 'q1_data.csv'
 if __name__ == '__main__':
