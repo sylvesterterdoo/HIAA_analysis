@@ -193,17 +193,3 @@ if __name__ == '__main__':
 
   main(df)
 
-"""
-Interpretations:
-
-Mean Temperature:
-The mean temperature for the past 10 winters ranges from approximately -3.06°C (coldest) to -0.11°C (mildest), with an average of around -1.33°C.
-The mean temperature for winter 2024 was -0.50°C, which is slightly milder than the average temperature over the past 10 years.
-Total Snowfall:
-The total snowfall for the past 10 winters ranges from 83.5 mm to 394.6 mm, with an average of approximately 227.8 mm.
-Winter 2024 had a total snowfall of 238.6 mm, which is consistent with the historical average.
-Total Precipitation:
-The total precipitation (rainfall + snowfall) for the past 10 winters varies from 337.9 mm to 1027.0 mm, averaging around 700.2 mm.
-Winter 2024 experienced a total precipitation of 863.8 mm, which is on the higher end compared to the historical average.
-These descriptive statistics provide insights into the weather conditions during the past 10 winter seasons and how winter 2024 compares in terms of mean temperature, snowfall, and precipitation. Winter 2024 generally exhibits similar characteristics to historical winters in terms of temperature and snowfall, but with slightly higher precipitation
-"""
